@@ -1,4 +1,4 @@
-(defproject clojure-bitly "0.1.3"
+(defproject clojure-bitly "0.1.4"
   :description "Bit.ly API client for Clojure"
   :url "https://github.com/gmwils/clojure-bitly"
   :dependencies [[org.clojure/clojure "1.5.1"]

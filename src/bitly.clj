@@ -113,6 +113,15 @@ Note: historical data is stored hourly beyond the most recent 60 minutes. If a u
   (let [request-url (build-request-url "user/countries" nil)]
     (request-data request-url)))
 
+(defn link-countries
+  "Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's bitly links." [link]
+  (let [request-url (build-request-url "link/countries" ["link" link])]
+    (request-data request-url)))
+
+(defn link-clicks
+  "Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's bitly links." [link]
+  (let [request-url (build-request-url "link/clicks" ["link" link])]
+    (request-data request-url)))
 
 (defn user-info []
   (let [request-url (build-request-url "user/info" nil)]
