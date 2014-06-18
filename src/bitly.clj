@@ -108,19 +108,22 @@ Note: historical data is stored hourly beyond the most recent 60 minutes. If a u
 (let [request-url (build-request-url "user/popular_links" ["unit" unit "units" units "timezone" timezone "limit" limit "unit_reference_ts" unit_reference_ts])]
     (request-data request-url)))
 
+(defn link-countries
+  "Returns metrics about the countries referring click traffic to a single bitly link."
+  [link & {:keys [unit units timezone limit unit_reference_ts] :or {unit "day" units "7" timezone "0" limit "100" unit_reference_ts "now"}}]
+  (let [request-url (build-request-url "link/countries" ["link" link "unit" unit "units" units "timezone" timezone "limit" limit "unit_reference_ts" unit_reference_ts])]
+    (request-data request-url)))
+
 (defn user-countries
   "Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's bitly links." []
   (let [request-url (build-request-url "user/countries" nil)]
     (request-data request-url)))
 
-(defn link-countries
-  "Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's bitly links." [link]
-  (let [request-url (build-request-url "link/countries" ["link" link])]
-    (request-data request-url)))
 
 (defn link-clicks
-  "Returns aggregate metrics about the countries referring click traffic to all of the authenticated user's bitly links." [link]
-  (let [request-url (build-request-url "link/clicks" ["link" link])]
+  "Returns the number of clicks on a single bitly link."
+  [link & {:keys [unit units timezone limit unit_reference_ts] :or {unit "day" units "7" timezone "0" limit "100" unit_reference_ts "now"}}]
+  (let [request-url (build-request-url "link/clicks" ["link" link "unit" unit "units" units "timezone" timezone "limit" limit "unit_reference_ts" unit_reference_ts])]
     (request-data request-url)))
 
 (defn user-info []
